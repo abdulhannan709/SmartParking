@@ -11,33 +11,15 @@
     tools:context=".MainActivity">
 
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/parkingsplash"
-        >
 
-    </ImageView>
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:src="@drawable/splashscreen1"
+    android:scaleType="fitCenter"
+    >
 
+</ImageView>
 
-    <TextView
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/concertoneregular"
-        android:text="Smart Parking"
-        android:textColor="#ffffff"
-        android:padding="10dp"
-        android:textSize="30sp"
-        android:layout_gravity="center"
-        android:textAlignment="center"
-        android:background="@drawable/circular_background"
-
-        >
-
-    </TextView>
 
 </LinearLayout>
