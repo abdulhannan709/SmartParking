@@ -3,7 +3,10 @@ package com.example.smartparking.tenant;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,9 +22,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.zxing.WriterException;
 
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
+
+import androidmads.library.qrgenearator.QRGContents;
+import androidmads.library.qrgenearator.QRGEncoder;
 
 public class SignupActivity_tenant extends AppCompatActivity {
 
@@ -82,7 +90,6 @@ public class SignupActivity_tenant extends AppCompatActivity {
     private void AddTenantToCollection(String email)
     {
         db = FirebaseFirestore.getInstance();
-
         Map<String, Object> userdata = new HashMap<>();
         userdata.put("email", email);
 
@@ -105,6 +112,7 @@ public class SignupActivity_tenant extends AppCompatActivity {
         
         
     }
+
 
 }
 
