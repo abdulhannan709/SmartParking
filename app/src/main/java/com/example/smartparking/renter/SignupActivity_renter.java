@@ -12,16 +12,23 @@ import android.widget.Toast;
 import com.example.smartparking.R;
 import com.example.smartparking.tenant.SignupActivity_tenant;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignupActivity_renter extends AppCompatActivity {
 
     EditText email_txt;
     EditText password_txt;
     private FirebaseAuth mauth;
+    private FirebaseFirestore db;
 
     Button signup_btn;
     @Override
@@ -44,7 +51,7 @@ public class SignupActivity_renter extends AppCompatActivity {
 
     void SignupRenter()
     {
-        String email = email_txt.getText().toString().trim();
+        final String email = email_txt.getText().toString().trim();
         String password = password_txt.getText().toString().trim();
 
         mauth = FirebaseAuth.getInstance();
@@ -55,6 +62,7 @@ public class SignupActivity_renter extends AppCompatActivity {
 
                 if (task.isSuccessful()) {
                     FirebaseUser user = mauth.getCurrentUser();
+                    AddRenterToCollection(email);
                     Toast.makeText(SignupActivity_renter.this, "Authentication Successful.", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -64,5 +72,28 @@ public class SignupActivity_renter extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void AddRenterToCollection(String email) {
+        db = FirebaseFirestore.getInstance();
+
+        Map<String, Object> userdata = new HashMap<>();
+        userdata.put("email", email);
+
+        db.collection("renter").document(email)
+                .set(userdata)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+                        Toast.makeText(SignupActivity_renter.this, "DocumentSnapshot successfully written!", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(SignupActivity_renter.this, "Task Failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }
