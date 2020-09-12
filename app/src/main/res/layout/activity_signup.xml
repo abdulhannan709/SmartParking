@@ -6,14 +6,86 @@
     android:gravity="center"
     >
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Signup_screen"
-        android:textSize="40dp"
+        android:paddingStart="25dp"
         >
 
-    </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get on Board"
+            android:textColor="@color/mainaccent"
+            android:textSize="40dp"
+            >
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="30dp"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/signupavatar"
+            >
+
+        </ImageView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtemail_signup"
+            android:hint="Enter your email"
+            android:padding="15dp"
+            android:background="@drawable/circular_background"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            >
+
+        </EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtpassword_signup"
+            android:layout_marginTop="20dp"
+            android:hint="Enter your password"
+            android:padding="15dp"
+            android:background="@drawable/circular_background"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            >
+
+        </EditText>
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/btnsignup"
+            android:layout_marginTop="20dp"
+            android:text="Sign Up"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:background="@drawable/buttondesign"
+            >
+
+        </Button>
+
+
+    </LinearLayout>
+
 
 
 </LinearLayout>
