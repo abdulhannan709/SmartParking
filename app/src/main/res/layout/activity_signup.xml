@@ -71,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtpassword_signup"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:hint="Enter your password"
                 android:inputType="textPassword"
                 android:padding="15dp"
