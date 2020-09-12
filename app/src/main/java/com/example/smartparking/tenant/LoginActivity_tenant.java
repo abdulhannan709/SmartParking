@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.smartparking.R;
 import com.example.smartparking.renter.LoginActivity_renter;
+import com.example.smartparking.renter.RenterMain;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -54,7 +55,9 @@ public class LoginActivity_tenant extends AppCompatActivity {
         singin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SignInTenant();
+                //SignInTenant();
+                Intent i = new Intent(LoginActivity_tenant.this, TenantMain.class);
+                startActivity(i);
             }
         });
 

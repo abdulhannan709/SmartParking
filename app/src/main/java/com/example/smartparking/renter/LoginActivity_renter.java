@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.smartparking.R;
 import com.example.smartparking.tenant.LoginActivity_tenant;
+import com.example.smartparking.tenant.TenantMain;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -50,7 +51,9 @@ public class LoginActivity_renter extends AppCompatActivity {
         signin_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LogInrenter();
+                //LogInrenter();
+                Intent i = new Intent(LoginActivity_renter.this, RenterMain.class);
+                startActivity(i);
             }
         });
 
@@ -69,7 +72,8 @@ public class LoginActivity_renter extends AppCompatActivity {
                 if (task.isSuccessful()) {
 
                     FirebaseUser user = mauth.getCurrentUser();
-                    Toast.makeText(LoginActivity_renter.this, "SignIn Succesfull.", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(LoginActivity_renter.this, RenterMain.class);
+                    startActivity(i);
                 } else {
 
                     Toast.makeText(LoginActivity_renter.this, "SignIn failed.", Toast.LENGTH_SHORT).show();

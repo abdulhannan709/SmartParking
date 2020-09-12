@@ -55,7 +55,7 @@ public class SignupActivity_renter extends AppCompatActivity {
 
                 if (task.isSuccessful()) {
                     FirebaseUser user = mauth.getCurrentUser();
-                    Toast.makeText(SignupActivity_renter.this, "Authentication Successfull.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity_renter.this, "Authentication Successful.", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Toast.makeText(SignupActivity_renter.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
