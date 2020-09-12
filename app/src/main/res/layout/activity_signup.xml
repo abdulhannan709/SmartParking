@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="30dp"
+        android:gravity="center"
         >
 
         <ImageView
@@ -41,52 +41,67 @@
 
         </ImageView>
 
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtemail_signup"
-            android:hint="Enter your email"
-            android:inputType="textEmailAddress"
-            android:padding="15dp"
-            android:background="@drawable/circular_background"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
+            android:orientation="vertical"
+            android:gravity="center"
+
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             >
 
-        </EditText>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtemail_signup"
+                android:hint="Enter your email"
+                android:inputType="textEmailAddress"
+                android:padding="15dp"
+                android:background="@drawable/circular_background"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                >
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtpassword_signup"
-            android:layout_marginTop="20dp"
-            android:hint="Enter your password"
-            android:inputType="textPassword"
-            android:padding="15dp"
-            android:background="@drawable/circular_background"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            >
+            </EditText>
 
-        </EditText>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtpassword_signup"
+                android:layout_marginTop="20dp"
+                android:hint="Enter your password"
+                android:inputType="textPassword"
+                android:padding="15dp"
+                android:background="@drawable/circular_background"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                >
 
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:id="@+id/btnsignup"
-            android:layout_marginTop="20dp"
-            android:text="Sign Up"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:background="@drawable/buttondesign"
-            >
-
-        </Button>
+            </EditText>
 
 
-    </LinearLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/btnsignup"
+                android:layout_marginTop="20dp"
+                android:text="Sign Up"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:background="@drawable/buttondesign"
+                >
+
+            </Button>
+
+
+        </LinearLayout>
+
+        </LinearLayout>
+
 
 
 
