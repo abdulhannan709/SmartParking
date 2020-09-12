@@ -74,6 +74,10 @@ public class LoginActivity_tenant extends AppCompatActivity {
                 if (task.isSuccessful()) {
 
                     FirebaseUser user = mauth.getCurrentUser();
+                    Intent i = new Intent(LoginActivity_tenant.this,TenantMain.class);
+                    startActivity(i);
+                    finish();
+
                     Toast.makeText(LoginActivity_tenant.this, "SignIn Succesfull.", Toast.LENGTH_SHORT).show();
                 } else {
 
