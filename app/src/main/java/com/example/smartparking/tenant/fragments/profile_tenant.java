@@ -61,6 +61,7 @@ public class profile_tenant extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        //bindings
         editText_fname=getActivity().findViewById(R.id.tenant_fname);
         editText_lname=getActivity().findViewById(R.id.tenant_lname);
         editText_phone=getActivity().findViewById(R.id.tenant_phone);

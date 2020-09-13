@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".renter.RenterMain"></activity>
+        <activity
+            android:name=".basic"
+            android:label="@string/title_activity_basic"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".renter.RenterMain" />
         <activity android:name=".tenant.TenantMain" />
         <activity android:name=".renter.SignupActivity_renter" />
         <activity android:name=".renter.LoginActivity_renter" />
