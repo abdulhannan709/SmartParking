@@ -84,10 +84,9 @@ public class SignupActivity_renter extends AppCompatActivity {
 
     private void AddRenterToCollection(String email) {
         db = FirebaseFirestore.getInstance();
-        String QR = GeneratQR();
         Map<String, Object> userdata = new HashMap<>();
         userdata.put("email", email);
-        userdata.put("QR", QR);
+
 
         db.collection("renter").document(email)
                 .set(userdata)
@@ -107,32 +106,32 @@ public class SignupActivity_renter extends AppCompatActivity {
     }
 
 
-    private String GeneratQR()
-    {
-        String getQr = null;
-        Bitmap bitmap;
-        QRGEncoder qrgEncoder = new QRGEncoder("25,some@mail.com", null, QRGContents.Type.TEXT, 400);
-        try {
-            // Getting QR-Code as Bitmap
-            bitmap = qrgEncoder.encodeAsBitmap();
-//            // Setting Bitmap to ImageView
-//            qrImage.setImageBitmap(bitmap);
-            getQr = BitMapToString(bitmap);
-        } catch (WriterException e) {
-            Log.d("TAG", e.toString());
-        }
+//    private String GeneratQR()
+//    {
+//        String getQr = null;
+//        Bitmap bitmap;
+//        QRGEncoder qrgEncoder = new QRGEncoder("25,some@mail.com", null, QRGContents.Type.TEXT, 400);
+//        try {
+//            // Getting QR-Code as Bitmap
+//            bitmap = qrgEncoder.encodeAsBitmap();
+////            // Setting Bitmap to ImageView
+////            qrImage.setImageBitmap(bitmap);
+//            getQr = BitMapToString(bitmap);
+//        } catch (WriterException e) {
+//            Log.d("TAG", e.toString());
+//        }
+//
+//        return getQr;
+//    }
 
-        return getQr;
-    }
-
-    //String to bitmap
-    public String BitMapToString(Bitmap bitmap){
-        ByteArrayOutputStream baos=new  ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
-        byte [] b=baos.toByteArray();
-        String temp= Base64.encodeToString(b, Base64.DEFAULT);
-        return temp;
-    }
+//    //String to bitmap
+//    public String BitMapToString(Bitmap bitmap){
+//        ByteArrayOutputStream baos=new  ByteArrayOutputStream();
+//        bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
+//        byte [] b=baos.toByteArray();
+//        String temp= Base64.encodeToString(b, Base64.DEFAULT);
+//        return temp;
+//    }
 
 
 
