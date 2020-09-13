@@ -86,6 +86,11 @@ public class SignupActivity_renter extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         Map<String, Object> userdata = new HashMap<>();
         userdata.put("email", email);
+        userdata.put("fname", "N/A");
+        userdata.put("lname", "N/A");
+        userdata.put("phone", "N/A");
+        userdata.put("image", "N/A");
+        userdata.put("address", "N/A");
 
 
         db.collection("renter").document(email)

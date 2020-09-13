@@ -51,9 +51,9 @@ public class LoginActivity_renter extends AppCompatActivity {
         signin_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //LogInrenter();
-                Intent i = new Intent(LoginActivity_renter.this, RenterMain.class);
-                startActivity(i);
+                LogInrenter();
+//                Intent i = new Intent(LoginActivity_renter.this, RenterMain.class);
+//                startActivity(i);
             }
         });
 

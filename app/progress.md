@@ -9,7 +9,7 @@ Added user docs in Collection<br>
 # On progress
 #### renter
 ##### profile
-firstname, lastname, email, phone, image, address, qr
+firstname, lastname, email, phone, image, address
 #### QR
 rate, email
 #### Post ad

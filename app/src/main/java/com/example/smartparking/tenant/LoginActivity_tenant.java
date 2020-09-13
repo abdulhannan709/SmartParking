@@ -55,9 +55,9 @@ public class LoginActivity_tenant extends AppCompatActivity {
         singin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //SignInTenant();
-                Intent i = new Intent(LoginActivity_tenant.this, TenantMain.class);
-                startActivity(i);
+                SignInTenant();
+//                Intent i = new Intent(LoginActivity_tenant.this, TenantMain.class);
+//                startActivity(i);
             }
         });
 
@@ -81,7 +81,7 @@ public class LoginActivity_tenant extends AppCompatActivity {
                     startActivity(i);
                     finish();
 
-                    Toast.makeText(LoginActivity_tenant.this, "SignIn Succesfull.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity_tenant.this, "SignIn Succesful.", Toast.LENGTH_SHORT).show();
                 } else {
 
                     Toast.makeText(LoginActivity_tenant.this, "SignIn failed.", Toast.LENGTH_SHORT).show();

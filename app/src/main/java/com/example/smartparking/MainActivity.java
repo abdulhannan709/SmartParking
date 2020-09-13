@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         };
-        worker.schedule(runnable, 2, TimeUnit.SECONDS);
+        worker.schedule(runnable, 1, TimeUnit.SECONDS);
 
 
     }
