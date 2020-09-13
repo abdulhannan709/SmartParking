@@ -14,9 +14,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.smartparking.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class home_renter extends Fragment {
 
+    FloatingActionButton floatingActionButton;
     public home_renter() {
 
     }
@@ -34,10 +36,35 @@ public class home_renter extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        floatingActionButton = getActivity().findViewById(R.id.fab);
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Fragment fragment;
+                fragment = new AddPost();
+                loadFragment(fragment);
+
+            }
+        });
+
 
 
     }
 
+
+    private boolean loadFragment(Fragment fragment) {
+        //switching fragment
+        if (fragment != null) {
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container_renter, fragment)
+                    .commit();
+            return true;
+        }
+        return false;
+    }
     //bitmap to string
 //    public Bitmap StringToBitMap(String encodedString){
 //        try {
