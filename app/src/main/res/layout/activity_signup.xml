@@ -34,8 +34,9 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:scaleType="centerCrop"
+            android:layout_height="250dp"
+            android:layout_marginTop="40dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/signupavatar"
             >
 
@@ -49,7 +50,7 @@
 
             android:paddingStart="30dp"
             android:paddingEnd="30dp"
-            android:paddingTop="10dp"
+            android:paddingTop="20dp"
             android:paddingBottom="10dp"
             >
 
@@ -58,6 +59,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/txtemail_signup"
                 android:hint="Enter your email"
+                android:layout_marginTop="10dp"
                 android:inputType="textEmailAddress"
                 android:padding="15dp"
                 android:background="@drawable/circular_background"
