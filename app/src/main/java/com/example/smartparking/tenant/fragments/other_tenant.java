@@ -38,9 +38,9 @@ import java.util.List;
 public class other_tenant extends Fragment implements LocationListener {
 
     Button button;
-    Location mLastLocation;
     TextView textView_lat;
     TextView textView_long;
+    Location mLastLocation;
     FusedLocationProviderClient mFusedLocationClient;
     SupportMapFragment supportMapFragment;
     LocationManager locationManager;
