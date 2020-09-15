@@ -3,6 +3,7 @@ package com.example.smartparking.tenant;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -65,6 +66,8 @@ public class LoginActivity_tenant extends AppCompatActivity {
 
     private void SignInTenant() {
 
+        final ProgressDialog loading = ProgressDialog.show(this, "Signing In", "Please wait ...");
+        loading.setCancelable(false);
         String email = emailedittxt.getText().toString().trim();
         String password = passwordedittxt.getText().toString().trim();
 
@@ -80,10 +83,11 @@ public class LoginActivity_tenant extends AppCompatActivity {
                     Intent i = new Intent(LoginActivity_tenant.this,TenantMain.class);
                     startActivity(i);
                     finish();
-
+                    loading.dismiss();
                     Toast.makeText(LoginActivity_tenant.this, "SignIn Succesful.", Toast.LENGTH_SHORT).show();
                 } else {
 
+                    loading.dismiss();
                     Toast.makeText(LoginActivity_tenant.this, "SignIn failed.", Toast.LENGTH_SHORT).show();
 
                 }

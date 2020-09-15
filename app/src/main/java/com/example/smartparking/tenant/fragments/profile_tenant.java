@@ -1,5 +1,6 @@
 package com.example.smartparking.tenant.fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -61,6 +62,9 @@ public class profile_tenant extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        final ProgressDialog loading = ProgressDialog.show(getContext(), "Signing In", "Please wait ...");
+        loading.setCancelable(false);
+
         //bindings
         editText_fname=getActivity().findViewById(R.id.tenant_fname);
         editText_lname=getActivity().findViewById(R.id.tenant_lname);
@@ -107,13 +111,15 @@ public class profile_tenant extends Fragment {
                         editText_address.setText(document.getData().get("address").toString().trim());
                         editText_phone.setText(document.getData().get("phone").toString().trim());
                         textView_email.setText(document.getData().get("email").toString().trim());
-
+                        loading.dismiss();
 
                     } else {
                         Log.d(TAG, "No such document");
+                        loading.dismiss();
                     }
                 } else {
                     Log.d(TAG, "get failed with ", task.getException());
+                    loading.dismiss();
                 }
             }
         });

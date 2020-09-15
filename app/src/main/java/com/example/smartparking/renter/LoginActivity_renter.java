@@ -3,6 +3,7 @@ package com.example.smartparking.renter;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -63,6 +64,9 @@ public class LoginActivity_renter extends AppCompatActivity {
     }
     private void LogInrenter() {
 
+        final ProgressDialog loading = ProgressDialog.show(this, "Signing In", "Please wait ...");
+        loading.setCancelable(false);
+
         String email = email_txt.getText().toString().trim();
         String password = password_txt.getText().toString().trim();
 
@@ -77,8 +81,10 @@ public class LoginActivity_renter extends AppCompatActivity {
                     FirebaseUser user = mauth.getCurrentUser();
                     Intent i = new Intent(LoginActivity_renter.this, RenterMain.class);
                     startActivity(i);
+                    loading.dismiss();
                 } else {
 
+                    loading.dismiss();
                     Toast.makeText(LoginActivity_renter.this, "SignIn failed.", Toast.LENGTH_SHORT).show();
 
                 }

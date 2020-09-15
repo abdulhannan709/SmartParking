@@ -3,6 +3,7 @@ package com.example.smartparking.tenant;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -62,6 +63,8 @@ public class SignupActivity_tenant extends AppCompatActivity {
 
     void SignupTenant()
     {
+        final ProgressDialog loading = ProgressDialog.show(this, "Signing Up", "Please wait ...");
+        loading.setCancelable(false);
 
         final String email = emailedittxt.getText().toString().trim();
         String password = passwordedittxt.getText().toString().trim();
@@ -75,9 +78,11 @@ public class SignupActivity_tenant extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     FirebaseUser user = mauth.getCurrentUser();
                     AddTenantToCollection(email);
+                    loading.dismiss();
                     Toast.makeText(SignupActivity_tenant.this, "Authentication Successfull.", Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    loading.dismiss();
                     Toast.makeText(SignupActivity_tenant.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
 
                 }

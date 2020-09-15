@@ -1,5 +1,6 @@
 package com.example.smartparking.renter.fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -69,6 +70,8 @@ public class profile_renter extends Fragment {
         textView_logout=getActivity().findViewById(R.id.renter_logout);
         button=getActivity().findViewById(R.id.renter_update);
 
+        final ProgressDialog loading = ProgressDialog.show(getContext(), "Fetching Profile", "Please wait ...");
+        loading.setCancelable(false);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,11 +112,16 @@ public class profile_renter extends Fragment {
                         editText_phone.setText(document.getData().get("phone").toString().trim());
                         textView_email.setText(document.getData().get("email").toString().trim());
 
+                        loading.dismiss();
 
                     } else {
+                        loading.dismiss();
+                        Toast.makeText(getContext(), "No such document", Toast.LENGTH_SHORT).show();
                         Log.d(TAG, "No such document");
+
                     }
                 } else {
+                    loading.dismiss();
                     Log.d(TAG, "get failed with ", task.getException());
                 }
             }
@@ -124,6 +132,10 @@ public class profile_renter extends Fragment {
     }
 
     void UpdateData(){
+
+        final ProgressDialog loading = ProgressDialog.show(getContext(), "Saving Data", "Please wait ...");
+        loading.setCancelable(false);
+
         Map<String, Object> userdata = new HashMap<>();
         userdata.put("fname", editText_fname.getText().toString());
         userdata.put("lname", editText_lname.getText().toString());
@@ -136,12 +148,16 @@ public class profile_renter extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+                        loading.dismiss();
+                        Toast.makeText(getContext(), "Saved!", Toast.LENGTH_SHORT).show();
                         Log.d(TAG, "DocumentSnapshot successfully updated!");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        loading.dismiss();
+                        Toast.makeText(getContext(), "Error updating document", Toast.LENGTH_SHORT).show();
                         Log.w(TAG, "Error updating document", e);
                     }
                 });
