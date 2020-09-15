@@ -26,39 +26,34 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.smartparking.R;
+import com.example.smartparking.renter.SignupActivity_renter;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class AddPost extends Fragment implements CompoundButton.OnCheckedChangeListener, LocationListener{
 
 
-    ToggleButton tM;
-    ToggleButton tT;
-    ToggleButton tW;
-    ToggleButton tTh;
-    ToggleButton tF;
-    ToggleButton tSat;
-    ToggleButton tSun;
+    ToggleButton tM, tT, tW, tTh, tF, tSat, tSun;
     String markedButtons = "";
-    TextView starttime;
-    TextView endtime;
-    Button getlocation;
-    TextView addLat;
-    TextView addLong;
-    Location mLastLocation;
+    TextView starttime,endtime,addLong,addLat;
+    EditText addTitle, addAddress, addRate;
+    Button getlocation, addbtn;
     FusedLocationProviderClient mFusedLocationClient;
-    SupportMapFragment supportMapFragment;
     LocationManager locationManager;
     ProgressDialog loading;
-
-
-    EditText Title;
-    EditText Address;
-    EditText Rate;
+    private FirebaseFirestore db;
+    private FirebaseAuth mAuth;
 
     public AddPost() {
         // Required empty public constructor
@@ -75,6 +70,7 @@ public class AddPost extends Fragment implements CompoundButton.OnCheckedChangeL
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        //Toggles
         tM = getActivity().findViewById(R.id.tM);
         tT = getActivity().findViewById(R.id.tT);
         tW = getActivity().findViewById(R.id.tW);
@@ -82,13 +78,21 @@ public class AddPost extends Fragment implements CompoundButton.OnCheckedChangeL
         tF = getActivity().findViewById(R.id.tF);
         tSat = getActivity().findViewById(R.id.tSat);
         tSun = getActivity().findViewById(R.id.tSun);
-        getlocation = getActivity().findViewById(R.id.btngetloc);
 
+        //Buttons
+        getlocation = getActivity().findViewById(R.id.btngetloc);
+        addbtn = getActivity().findViewById(R.id.btnaddParking);
+
+        //Textviews
         starttime = getActivity().findViewById(R.id.addstartTime);
         endtime = getActivity().findViewById(R.id.addEndTime);
-
         addLat = getActivity().findViewById(R.id.addLat);
         addLong = getActivity().findViewById(R.id.addLong);
+
+        //EditText
+        addTitle = getActivity().findViewById(R.id.addtitle);
+        addAddress = getActivity().findViewById(R.id.addaddress);
+        addRate = getActivity().findViewById(R.id.addRate);
 
         //Toggle Click listener
         tM.setOnCheckedChangeListener(this);
@@ -152,6 +156,62 @@ public class AddPost extends Fragment implements CompoundButton.OnCheckedChangeL
                 getLocation();
             }
         });
+
+        //Adding All data to Cloud Firestore
+
+
+        addbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //fetching aut email and intitliazing cloud instance
+                db = FirebaseFirestore.getInstance();
+                mAuth = FirebaseAuth.getInstance();
+                FirebaseUser currentUser = mAuth.getCurrentUser();
+                String mail = currentUser.getEmail();
+
+                String Title = addTitle.getText().toString().trim();
+                String Address = addAddress.getText().toString().trim();
+                String Rate = addRate.getText().toString().trim();
+                String activedays = markedButtons;
+                String startTime = starttime.getText().toString().trim();
+                String endTime = endtime.getText().toString().trim();
+                String Lat = addLat.getText().toString().trim();
+                String Lon = addLong.getText().toString();
+
+
+
+                Map<String, Object> userdata = new HashMap<>();
+                userdata.put("email", mail);
+                userdata.put("title", Title);
+                userdata.put("address", Address);
+                userdata.put("rate", Rate);
+                userdata.put("activedays", activedays);
+                userdata.put("starttime", startTime);
+                userdata.put("endtime", endTime);
+                userdata.put("Latitude", Lat);
+                userdata.put("Longitude", Lon);
+
+
+                db.collection("parking").document(mail)
+                        .set(userdata)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+
+                                Toast.makeText(getContext(), "DocumentSnapshot successfully written!", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getContext(), "Task Failed", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+            }
+        });
+
 
 
     }
