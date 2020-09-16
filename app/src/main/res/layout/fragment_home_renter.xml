@@ -1,35 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mainaccent"
     tools:context=".renter.fragments.home_renter">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            >
-
-
-        </ListView>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="70dp"
-            app:borderWidth="0dp"
-            app:elevation="6dp"
-            app:fabSize="normal"
-            app:rippleColor="#7A82FD"
-            android:src="@drawable/ic_baseline_add_24"
-            android:layout_marginEnd="20dp"
+            android:layout_marginTop="5dp"
+            android:paddingStart="20dp"
+            android:text="My Parkings"
+            android:textColor="@android:color/white"
+            android:textSize="40sp" />
 
-            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/gummy_location">
+
+        </ImageView>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="200dp"
+        android:paddingTop="20dp"
+        android:background="@drawable/profile_background">
+
+            <ListView
+                android:id="@+id/list_renter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                ></ListView>
+
+
+    </LinearLayout>
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="70dp"
+        android:src="@drawable/ic_baseline_add_24"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        app:fabSize="normal"
+        app:rippleColor="#7A82FD"
+
+        />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
